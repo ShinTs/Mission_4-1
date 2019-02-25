@@ -6,12 +6,12 @@
 
 <body>
   <?php
-  //データベース接続(3-1)
-  $dsn = 'mysql:dbname=tt_808_99sv_coco_com;host=localhost';
-  $user = 'tt-808.99sv-coco';
-  $password = 'R6aPnN4W';
+  //データベース接続
+  $dsn = 'DATABASENAME';
+  $user = 'USERNAME';
+  $password = 'PASSWORDNAME';
   $pdo = new PDO($dsn, $user, $password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
-  //テーブル作成(3-2)
+  //テーブル作成
   $sql="CREATE TABLE IF NOT EXISTS Mission41"
   ."("
   ."num INT AUTO_INCREMENT NOT NULL PRIMARY KEY,"
@@ -22,7 +22,7 @@
   .");";
   $stmt = $pdo -> query($sql);
 
-  //編集その1(2-4,2-5)
+  //編集その1
   if(!empty($_POST["ednum"]) && !empty($_POST["edpass"])){
     echo"編集";
     $ednum = $_POST["ednum"];
@@ -108,16 +108,7 @@ if(!empty($name) && !empty($comment) && !empty($password) && empty($Check)){
 
   //編集機能
  if(!empty($name) && !empty($comment) && !empty($_POST["Check"]) && !empty($_POST["password"])){//pass delete
-  //$sql = 'select from Mission41 where num=:num and pass=:edpass';
-  //$stmt = $pdo -> prepare($sql);
-  //$results = $stmt->fetchAll();
-	//foreach($results as $exe){
-		//if($_POST["Check"] === $exe[0]  && $_POST["pass"] === $exe[4]){
-		//$new_name=$_POST["name"];
-		//$new_comment=$_POST["comment"];
-		//$new_time=date("Y/m/d H:i:s" );
-		//$new_pass=$_POST["password"];
-		 $sql='update Mission41 set name=:name,comment=:comment,date=:date,password=:password where num=:num';
+  		 $sql='update Mission41 set name=:name,comment=:comment,date=:date,password=:password where num=:num';
 		 $stmt=$pdo->prepare($sql);
 		 $stmt->bindParam(':name',$name,PDO::PARAM_STR);
 		 $stmt->bindParam(':comment',$comment,PDO::PARAM_STR);
@@ -131,11 +122,8 @@ if(!empty($name) && !empty($comment) && !empty($password) && empty($Check)){
 		 $date=date("Y/m/d H:i:s" );
 		 $stmt->execute();
 		echo"対象の投稿内容を編集しました。<br>";
-		//}else{
-		//}
-	 //}
  }
- //3-6:select表示
+ //select表示
 		 $sql='SELECT*FROM Mission41 ORDER BY num';
 		 $stmt=$pdo -> query($sql);
 		 $results=$stmt -> fetchAll();
