@@ -6,12 +6,12 @@
 
 <body>
   <?php
-  //データベース接続(3-1)
-  $dsn = 'mysql:dbname=tt_808_99sv_coco_com;host=localhost';
-  $user = 'tt-808.99sv-coco';
-  $password = 'R6aPnN4W';
+  //データベース接続
+  $dsn = 'XXXXXXXXXXXXXXX';
+  $user = 'XXXXXXXXXXXX';
+  $password = 'XXXXXXXXX';
   $pdo = new PDO($dsn, $user, $password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
-  //テーブル作成(3-2)
+  //テーブル作成
   $sql="CREATE TABLE IF NOT EXISTS Mission41"
   ."("
   ."num INT AUTO_INCREMENT NOT NULL PRIMARY KEY,"
@@ -133,7 +133,7 @@ if(!empty($name) && !empty($comment) && !empty($password) && empty($Check)){
 		}
 	 }
  }
- //3-6:select表示
+ //select表示
 		 $sql='SELECT*FROM Mission41';
 		 $stmt=$pdo -> query($sql);
 		 $results=$stmt -> fetchAll();
